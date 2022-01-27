@@ -1,0 +1,15 @@
+server:
+  port: 8005
+  
+spring:
+  cloud:
+    consul:
+      discovery:
+        instanceId: mail-service
+        health-check-interval: 5s
+      config:
+        management: 
+          enabled: true
+management:
+  security: 
+    enabled: false
