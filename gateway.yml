@@ -55,6 +55,12 @@ spring:
           args:
             name: monitor-ms-mail
             fallbackUri: forward:/fallback/ms-mail
+      - id: MQActivityService
+        uri: lb://activity
+        predicates:
+        - Path=/act/**
+        filters:
+        - RewritePath=/act/(?<segment>.*), /$\{segment} 
     consul:
       discovery:
         instanceId: gateway
