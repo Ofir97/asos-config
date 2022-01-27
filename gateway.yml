@@ -45,6 +45,16 @@ spring:
           args:
             name: monitor-ms-order
             fallbackUri: forward:/fallback/ms-order
+      - id: mail-service
+        uri: lb://ms-mail
+        predicates:
+        - Path=/ms-mail/**
+        filters:
+        - RewritePath=/ms-mail/(?<segment>.*), /$\{segment}
+        - name: Hystrix
+          args:
+            name: monitor-ms-mail
+            fallbackUri: forward:/fallback/ms-mail
     consul:
       discovery:
         instanceId: gateway
