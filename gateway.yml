@@ -63,7 +63,7 @@ spring:
         - RewritePath=/act/(?<segment>.*), /$\{segment} 
     consul:
       discovery:
-        instanceId: gateway
+        instanceId: Gateway
         health-check-interval: 5s
       config:
         management: 
